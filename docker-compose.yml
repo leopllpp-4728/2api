@@ -1,0 +1,17 @@
+services:
+  2api:
+    build: .
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      - PORT=3000
+      - CAPY_EMAIL=${CAPY_EMAIL}
+      - CAPY_PASSWORD=${CAPY_PASSWORD}
+      - CAPY_API_TOKEN=${CAPY_API_TOKEN}
+      - CAPY_PROJECT_ID=${CAPY_PROJECT_ID}
+      - PROXY_API_KEY=${PROXY_API_KEY}
+      - STREAM_MODE=${STREAM_MODE:-auto}
+      - DEFAULT_MODEL=${DEFAULT_MODEL:-auto}
+    volumes:
+      - ./accounts.json:/app/accounts.json
+    restart: unless-stopped
